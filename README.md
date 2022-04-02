@@ -5,8 +5,8 @@ the addictive sitckman parkour game
 
 > Not in any order, prob not spelled right, rushed just to have some level of time organization
 
-- [ ] Game loop, spawning in pillars
-- [ ] Pillar script, make pillars move right to left
+- [ ] Game loop, spawning in pillars randomly vertically
+- [x] Pillar script, make pillars move right to left
 - [ ] Character Rig
 - [ ] Character Controls
 - [ ] Game center leaderboard
