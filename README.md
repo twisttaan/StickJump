@@ -12,7 +12,7 @@ the addictive sitckman parkour game
 
 - [ ] Game loop, spawning in pillars randomly vertically
 - [x] Pillar script, make pillars move right to left
-- [ ] Character Rig
+- [x] Character Rig
 - [ ] Character Controls
 - [ ] Game center leaderboard
 - [ ] Main menu
