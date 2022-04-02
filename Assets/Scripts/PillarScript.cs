@@ -8,5 +8,9 @@ public class PillarScript : MonoBehaviour
     void Update()
     {
         rb2D.velocity = new Vector2(-4, 0);
+        if (transform.position.x < -10)
+        {
+            Destroy(gameObject);
+        }
     }
 }
