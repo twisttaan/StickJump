@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class TouchManager : MonoBehaviour
 {
-
     public GameManager gameManager;
+
+    private PlayerController player;
+
+    void Start()
+    {
+        player = GameObject.Find("Jerry").GetComponent<PlayerController>();
+    }
 
     void Update()
     {
@@ -13,7 +19,14 @@ public class TouchManager : MonoBehaviour
         {
             if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
-                gameManager.StartGame();
+                if (!gameManager.inGame)
+                {
+                    gameManager.StartGame(); return;
+                }
+
+                player.muscles[0].bone.AddForce(new Vector2(0, 15));
+
+
             }
         }
     }

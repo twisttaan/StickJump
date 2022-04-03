@@ -5,12 +5,24 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public _Muscle[] muscles;
+    private GameManager gameManager;
+
+    void Start()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
+
 
     private void Update()
     {
         foreach (_Muscle muscle in muscles)
         {
             muscle.ActivateMuscle();
+        }
+
+        if (gameManager.inGame)
+        {
+            muscles[0].bone.AddForce(new Vector2(15, 0));
         }
     }
 }
