@@ -42,7 +42,7 @@ public class BlockPlacer : MonoBehaviour
             Vector2 spawnPosition = new Vector2(pTransform.position.x + Random.Range(10, 30), rightLeg.position.y - Random.Range(2, 4));
 
             // make sure there isnt already a block in a circle radius of the spawn position
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(spawnPosition, 1.5f);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(spawnPosition, Random.Range(2, 5));
             bool clear = true;
             foreach (Collider2D collider in colliders)
             {
