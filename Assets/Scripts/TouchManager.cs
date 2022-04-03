@@ -24,9 +24,6 @@ public class TouchManager : MonoBehaviour
                     gameManager.StartGame(); return;
                 }
 
-                player.muscles[0].bone.AddForce(new Vector2(0, 15));
-
-
             }
         }
     }

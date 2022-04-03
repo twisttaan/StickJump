@@ -6,18 +6,44 @@ public class PlayerController : MonoBehaviour
 {
     public _Muscle[] muscles;
     private GameManager gameManager;
+    public bool ragdoll = false;
 
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
+    IEnumerator Jump()
+    {
+        if (ragdoll) yield break;
+
+        foreach (var muscle in muscles)
+        {
+            muscle.Jump();
+        }
+    }
+
 
     private void Update()
     {
-        foreach (_Muscle muscle in muscles)
+        if (!ragdoll)
         {
-            muscle.ActivateMuscle();
+            foreach (_Muscle muscle in muscles)
+            {
+                muscle.ActivateMuscle();
+            }
+        }
+
+        if (Input.touchCount > 0)
+        {
+            if (Input.GetTouch(0).phase == TouchPhase.Began)
+            {
+                if (gameManager.inGame)
+                {
+                    print("Jumping!");
+                    StartCoroutine(Jump());
+                }
+            }
         }
 
         if (gameManager.inGame)
@@ -36,5 +62,10 @@ public class _Muscle
     public void ActivateMuscle()
     {
         bone.MoveRotation(Mathf.LerpAngle(bone.rotation, restRotation, force * Time.deltaTime));
+    }
+
+    public void Jump()
+    {
+        bone.AddForce(new Vector2(0, 510));
     }
 }
